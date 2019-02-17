@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <h1>3D Cloud Renderer</h1>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+        <label for="user_file">1. Upload Your 3D File: </label>
+        <input type="file" name="user_file">
+        <button type="submit">Upload</button>
+
+    </form>
+    <br></br>
+    <form action="/fetchModels" method="get">
+
+        2. <button name="forwardBtn" type="submit">Fetch Models</button>
+
+    </form>
+    <br></br>
+    <form action="/render" method="POST">
+
+        3. <select name=select_model required>
+            {% for model in models %}
+                <option value= "{{model}}">{{model}}</option>"
+            {% endfor %}
+        </select>
+        Resolution width: <input type="text" name="width" required>
+        height: <input type="text" name="height" required>
+        pixel offset: <input type="text" name="pixel_offset">
+        <button type="submit">Render</button>
+
+    </form>
+    <br></br>
+    <li>{{image_rendered}}</li>
+    {% if image_rendered %}
+        Rendered Image
+        <br></br>
+        <img src="https://s3.ap-south-1.amazonaws.com/www.3dcloudrenderer.com/myImage0000.jpg" alt="3dsmaxRendered" width={{width}} height={{height}}>
+    {% endif %}
+
+    <br></br>Message from Server:
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+</body>
+
+</html>
