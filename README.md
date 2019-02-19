@@ -16,4 +16,4 @@ _Back-end:_
 1. Once you click render, respective Max file will be pulled to local.
 2. Using the local copy of 3ds Max and specified render settings, 3ds Max command line rendering will be called.
 3. The rendered image will then be uploaded to S3 Bucket from your local.
-4. This rendered image is then pulled from S3 and displayed in brower(above).
+4. This rendered image is then pulled from S3 and displayed in browser(above).
